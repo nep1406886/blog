@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"nep1406886.github.io","root":"/blog/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="RE：start？ 先康康，简单的吸嗦下euserv 和heroku和xray吗？唔呣，反正先写写">
+<meta property="og:type" content="article">
+<meta property="og:title" content="重启吗">
+<meta property="og:url" content="https://nep1406886.github.io/blog/2021/11/23/%E9%87%8D%E5%90%AF%E5%90%97/index.html">
+<meta property="og:site_name" content="Hello World!">
+<meta property="og:description" content="RE：start？ 先康康，简单的吸嗦下euserv 和heroku和xray吗？唔呣，反正先写写">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/nep1406886/picgoMDimg/main/img/202111231027449.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/nep1406886/picgoMDimg/main/img/202111231659415.png">
+<meta property="article:published_time" content="2021-11-23T04:16:41.000Z">
+<meta property="article:modified_time" content="2023-05-11T03:34:34.536Z">
+<meta property="article:author" content="1406886">
+<meta property="article:tag" content="nep">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/nep1406886/picgoMDimg/main/img/202111231027449.jpg">
+
+<link rel="canonical" href="https://nep1406886.github.io/blog/2021/11/23/%E9%87%8D%E5%90%AF%E5%90%97/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>重启吗 | Hello World!</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hello World!</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Hello World</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://nep1406886.github.io/blog/2021/11/23/%E9%87%8D%E5%90%AF%E5%90%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="1406886">
+      <meta itemprop="description" content="w">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello World!">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          重启吗
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-11-23 12:16:41" itemprop="dateCreated datePublished" datetime="2021-11-23T12:16:41+08:00">2021-11-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-05-11 11:34:34" itemprop="dateModified" datetime="2023-05-11T11:34:34+08:00">2023-05-11</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="RE：start？"><a href="#RE：start？" class="headerlink" title="RE：start？"></a>RE：start？</h1><p><img src="https://raw.githubusercontent.com/nep1406886/picgoMDimg/main/img/202111231027449.jpg" alt="デレ化現象100％-初音ミク for lamazeP - YouTube_5&#39;13.901&#39;"></p>
+<p>先康康，简单的吸嗦下euserv 和heroku和xray吗？唔呣，反正先写写</p>
+<span id="more"></span>
+
+
+
+<p>  转移到github，挺怪的 页面空白还报错</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">[<span class="identifier">master</span> <span class="number">4</span><span class="identifier">cc2dfd</span>]</span> blog update</span><br><span class="line"> <span class="number">22</span> files changed, <span class="number">160</span> insertions(+), <span class="number">160</span> deletions(-)</span><br><span class="line">fatal: unable <span class="keyword">to</span> access &#x27;https:<span class="comment">//github.com/suoga1406886/nephren.git/&#x27;: OpenSSL SSL_read: Connection was aborted, errno 10053</span></span><br><span class="line">FATAL Something&#x27;s wrong. Maybe you can find the solution here: https:<span class="comment">//hexo.io/docs/troubleshooting.html</span></span><br><span class="line">Error: Spawn failed</span><br><span class="line">    at ChildProcess.&lt;anonymous&gt; (E:\my hexo\node_modules\hexo-util\lib\spawn.js:<span class="number">51</span>:<span class="number">21</span>)</span><br><span class="line">    at <span class="module-access"><span class="module"><span class="identifier">ChildProcess</span>.</span></span>emit (events.js:<span class="number">315</span>:<span class="number">20</span>)</span><br><span class="line">    at <span class="module-access"><span class="module"><span class="identifier">ChildProcess</span>.</span></span>cp.emit (E:\my hexo\node_modules\cross-spawn\lib\enoent.js:<span class="number">34</span>:<span class="number">29</span>)</span><br><span class="line">    at <span class="module-access"><span class="module"><span class="identifier">Process</span>.</span><span class="module"><span class="identifier">ChildProcess</span>.</span><span class="module"><span class="identifier">_handle</span>.</span></span>onexit (internal/child_process.js:<span class="number">277</span>:<span class="number">12</span>)</span><br></pre></td></tr></table></figure>
+
+<p><del>先这样解决了</del></p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.sslVerify <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<p><u>Git默认限制推送的大小，运行命令更改限制大小即可</u></p>
+<p><del>应该这样</del> </p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">config</span> <span class="comment">--global http.postBuffer 524288000</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="attribute">4</span> files changed, <span class="number">9</span> insertions(+), <span class="number">7</span> deletions(-)</span><br><span class="line"> <span class="attribute">rewrite</span> content.json (<span class="number">76</span>%)</span><br><span class="line"><span class="attribute">fatal</span>: unable to access &#x27;https://github.com/suoga<span class="number">1406886</span>/nephren.git/&#x27;: Failed to connect to github.com port <span class="number">443</span>: Timed out</span><br><span class="line"><span class="attribute">FATAL</span> Something&#x27;s wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.html</span><br><span class="line"><span class="attribute">Error</span>: Spawn failed</span><br><span class="line">    <span class="attribute">at</span> ChildProcess.&lt;anonymous&gt; (E:\my hexo\node_modules\hexo-util\lib\spawn.js:<span class="number">51</span>:<span class="number">21</span>)</span><br><span class="line">    <span class="attribute">at</span> ChildProcess.emit (events.js:<span class="number">315</span>:<span class="number">20</span>)</span><br><span class="line">    <span class="attribute">at</span> ChildProcess.cp.emit (E:\my hexo\node_modules\cross-spawn\lib\enoent.js:<span class="number">34</span>:<span class="number">29</span>)</span><br><span class="line">    <span class="attribute">at</span> Process.ChildProcess._handle.onexit (internal/child_process.js:<span class="number">277</span>:<span class="number">12</span>)</span><br></pre></td></tr></table></figure>
+
+<p>寄吧了，貌似是网络问题，把v2关了</p>
+<p><del>然后又出来给大问题，部署后白屏了</del></p>
+<p>我是傻逼</p>
+<p><img src="https://raw.githubusercontent.com/nep1406886/picgoMDimg/main/img/202111231659415.png"></p>
+<p>路径忘记改了</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/blog/2022/07/03/NOreadme/" rel="next" title="hexo&test">
+      hexo&test <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#RE%EF%BC%9Astart%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">RE：start？</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">1406886</p>
+  <div class="site-description" itemprop="description">w</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">1406886</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/muse.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

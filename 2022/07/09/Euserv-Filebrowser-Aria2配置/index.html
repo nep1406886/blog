@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"nep1406886.github.io","root":"/blog/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Euserv+Filebrowser+Aria2配置善用搜索">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Euserv+Filebrowser+Aria2配置">
+<meta property="og:url" content="https://nep1406886.github.io/blog/2022/07/09/Euserv-Filebrowser-Aria2%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:site_name" content="Hello World!">
+<meta property="og:description" content="Euserv+Filebrowser+Aria2配置善用搜索">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/nep1406886/picgoMDimg/main/img/image-20220709095544600.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/nep1406886/picgoMDimg/main/img/image-20220709094944790.png">
+<meta property="og:image" content="http://image.coolapk.com/feed/2021/1015/21/1416461_da462fa4_6078_9975@592x527.png.m.jpg">
+<meta property="og:image" content="http://image.coolapk.com/feed/2021/1015/21/1416461_5cacbccc_6078_9977@387x73.png.m.jpg">
+<meta property="og:image" content="http://image.coolapk.com/feed/2021/1015/21/1416461_33ed172a_6078_9979@810x439.png.m.jpg">
+<meta property="og:image" content="http://image.coolapk.com/feed/2021/1015/21/1416461_c649dfce_6078_998@598x109.png.m.jpg">
+<meta property="og:image" content="http://image.coolapk.com/feed/2021/1015/21/1416461_a8b105e1_6078_9982@363x117.png.m.jpg">
+<meta property="og:image" content="http://static.coolapk.com/emoticons/v9/coolapk_emotion_64_shounuehuaji.png">
+<meta property="og:image" content="http://wcwc.ml/usr/themes/handsome/usr/img/emotion/paopao/tieba_emotion_03.png">
+<meta property="article:published_time" content="2022-07-09T03:15:45.000Z">
+<meta property="article:modified_time" content="2023-05-10T13:45:18.757Z">
+<meta property="article:author" content="1406886">
+<meta property="article:tag" content="nep">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/nep1406886/picgoMDimg/main/img/image-20220709095544600.png">
+
+<link rel="canonical" href="https://nep1406886.github.io/blog/2022/07/09/Euserv-Filebrowser-Aria2%E9%85%8D%E7%BD%AE/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Euserv+Filebrowser+Aria2配置 | Hello World!</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hello World!</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Hello World</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://nep1406886.github.io/blog/2022/07/09/Euserv-Filebrowser-Aria2%E9%85%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="1406886">
+      <meta itemprop="description" content="w">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello World!">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Euserv+Filebrowser+Aria2配置
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-07-09 11:15:45" itemprop="dateCreated datePublished" datetime="2022-07-09T11:15:45+08:00">2022-07-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-05-10 21:45:18" itemprop="dateModified" datetime="2023-05-10T21:45:18+08:00">2023-05-10</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="Euserv-Filebrowser-Aria2配置"><a href="#Euserv-Filebrowser-Aria2配置" class="headerlink" title="Euserv+Filebrowser+Aria2配置"></a>Euserv+Filebrowser+Aria2配置</h2><p>善用搜索</p>
+<span id="more"></span>
+
+<p>###网盘的选择上<br>因为是euserv提供的免费vps，安装了debian11<br>因为是小鸡配置低，所以</p>
+<blockquote>
+<p>hello world！大家好啊，我是楼主。网盘程序有很多，热门的比如nextcloud cloudreve等等，也有些文件目录列表程序zfile h5ai等等，这些楼主都搭建过，随便说几句碎碎念doge笑哭。<br>nextcloud：功能强大，花里胡哨，臃肿，执行效率低，性能开销高，不适合个人使用斗鸡眼滑稽。<br>cloudreve：国人开发，已经改用了go语言，效率不错，支持对接aria2，离线功能鸡肋，不如直接用ariang，支持多用户，适合做跑路网盘受虐滑稽。<br>zfile h5ai：轻便简约的列表程序，没有上传功能，适合做公共文件下载库斗鸡眼滑稽。<br>这些楼主都不太喜欢，于是又找了找，发现了一款叫Filebrowser的，go语言开发，超轻量设计，开销低，高效率，高并发doge。<br>支持多用户、在线PDF、图片、视频浏览、上传下载、打包下载、执行shell等功能，灰常强大。<br>缺点就是没有内置挂载各路大厂网盘的API，不过可以用rclone解决，由于楼主没有大容量网盘（在线求送5Tcos滑稽），所以本教程用本地存储哈受虐滑稽。</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="http://wcwc.ml/">原文地址</a></p>
+<p>经过漫长的善用搜索，找到了一个名为filebrowser的网盘程序</p>
+<h3 id="自用搭建filebrowser"><a href="#自用搭建filebrowser" class="headerlink" title="自用搭建filebrowser"></a>自用搭建filebrowser</h3><p>先放官网链接</p>
+<p><a target="_blank" rel="noopener" href="https://filebrowser.org/installation">https://filebrowser.org/installation</a></p>
+<p><del>用docker部署挺方便的，就是德鸡docker貌似有问题，所以pass了（其实是搭了几次卡死了</del></p>
+<p><del>所以这里也不用官网一键安装了</del></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/ywd1992/article/details/93030495">https://blog.csdn.net/ywd1992/article/details/93030495</a></p>
+<p><a target="_blank" rel="noopener" href="http://wcwc.ml/">德鸡必看</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/boss95/p/15150887.html">https://www.cnblogs.com/boss95/p/15150887.html</a></p>
+<p>感谢以上</p>
+<p>先下载</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mkdir filebrowser</span><br><span class="line"><span class="comment">#搞个地方放东西咯</span></span><br><span class="line">wget xxxx</span><br><span class="line"><span class="comment">#去GitHub下载压缩包</span></span><br><span class="line">tar -zxvf xxx</span><br><span class="line"><span class="comment">#解压</span></span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://github.com/filebrowser/filebrowser/releases/">https://github.com/filebrowser/filebrowser/releases/</a></p>
+<p>GitHub链接</p>
+<hr>
+<h4 id="然后是配置"><a href="#然后是配置" class="headerlink" title="然后是配置"></a>然后是配置</h4><p><strong>创建配置数据库</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./filebrowser -d filebrowser.db config init</span><br></pre></td></tr></table></figure>
+
+<p><strong>设置监听地址</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./filebrowser -d filebrowser.db config <span class="built_in">set</span> --address 0.0.0.0</span><br></pre></td></tr></table></figure>
+
+<p><strong>设置监听端口</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./filebrowser -d filebrowser.db config <span class="built_in">set</span> --port 2052</span><br><span class="line"><span class="comment">#开了防火墙的记得放行端口</span></span><br></pre></td></tr></table></figure>
+
+<p>这里指定端口，因为挂了cf且不打算用https，所以我指定2052</p>
+<p><strong>设置中文语言环境</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./filebrowser -d filebrowser.db config <span class="built_in">set</span> --locale zh-cn</span><br></pre></td></tr></table></figure>
+
+<p><strong>设置日志文件位置</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./filebrowser -d filebrowser.db config <span class="built_in">set</span> --<span class="built_in">log</span> /root/filebrowser/filebrowser.log</span><br></pre></td></tr></table></figure>
+
+<p><strong>添加用户</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./filebrowser -d filebrowser.db users add user password --perm.admin</span><br><span class="line"><span class="comment">#user：用户名</span></span><br><span class="line"><span class="comment">#password：密码</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>设置文件根目录</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./filebrowser -d filebrowser.db config <span class="built_in">set</span> --root /root/downloads</span><br></pre></td></tr></table></figure>
+
+<p>这样就配置好了，然后<strong>运行</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./filebrowser -d filebrowser.db</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="关于配置的题外话"><a href="#关于配置的题外话" class="headerlink" title="关于配置的题外话"></a>关于配置的题外话</h4><p><del>其实直接./filebrowser初始化也可以，只是</del>，默认是账户admin 密码admin</p>
+<p><img src="https://raw.githubusercontent.com/nep1406886/picgoMDimg/main/img/image-20220709095544600.png" alt="image-20220709095544600"></p>
+<p><img src="https://raw.githubusercontent.com/nep1406886/picgoMDimg/main/img/image-20220709094944790.png" alt="image-20220709094944790"></p>
+<p>进不去的话改下监听地址0.0.0.0，记得设置文件根目录</p>
+<h4 id="编写service文件"><a href="#编写service文件" class="headerlink" title="编写service文件"></a>编写service文件</h4><p>方便启动嘛，先</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim <span class="regexp">/etc/</span>systemd<span class="regexp">/system/</span>filebrowser.service</span><br></pre></td></tr></table></figure>
+
+<p>然后写这些东西，ExecStart根据自己路径</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=File Browser</span><br><span class="line">After=network.target</span><br><span class="line">[Service]</span><br><span class="line">ExecStart=/root/filebrowser/filebrowser -d /root/filebrowser/filebrowser.db</span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<p><strong>启动及开机自启</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl start filebrowser</span><br><span class="line">systemctl <span class="built_in">enable</span> filebrowser</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Aria2的搭建"><a href="#Aria2的搭建" class="headerlink" title="Aria2的搭建"></a>Aria2的搭建</h3><p>全仰仗<a target="_blank" rel="noopener" href="http://wcwc.ml/">这位老哥</a></p>
+<p>这里是使用P3TERX大神的Aria2增强版脚本。推荐理由是此项目自2018年P3TERX大神接手后，已经优化很完美了，且整合了与rclone联动上传功能，非常方便。（复读）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -N git.io/aria2.sh &amp;&amp; chmod +x aria2.sh &amp;&amp; ./aria2.sh</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://image.coolapk.com/feed/2021/1015/21/1416461_da462fa4_6078_9975@592x527.png.m.jpg" alt="img"></p>
+<p>有ipv4的鸡可以直接运行了，查看配置里面有个链接，打开链接就能进AriaNg,记得修改下下载路径之类的配置</p>
+<p>也可以直接打开AriaNg html本地版，不需要web环境，浏览器直接使用，连接测试吧。</p>
+<p>而我就不能急了，euserv只有ipv6公网，所以必须要修改下配置文件。</p>
+<h4 id="只有ipv6的鸡需要修改"><a href="#只有ipv6的鸡需要修改" class="headerlink" title="只有ipv6的鸡需要修改"></a>只有ipv6的鸡需要修改</h4><p>配置文件位于”/root/.aria2c/aria2.conf”，这边也是建议最好下载到本地修改（虽然我是直接vim）</p>
+<p>第126行，禁用ipv6，这里一定要关闭。</p>
+<p><img src="http://image.coolapk.com/feed/2021/1015/21/1416461_5cacbccc_6078_9977@387x73.png.m.jpg" alt="img"></p>
+<p>第152-166行，BT监听端口（TCP）和DHT端口（UDP），这两端口因协议不同，可以设置一样，CF不支持此类型入站，楼主用6999。<br>IPv6 DHT 功能一定要启用。</p>
+<p><img src="http://image.coolapk.com/feed/2021/1015/21/1416461_33ed172a_6078_9979@810x439.png.m.jpg" alt="img"></p>
+<p><del>第300行，改为 upload.s h，即下载完成后，自动上传到网盘，不占用服务器空间。</del></p>
+<p><del>没用Rclone配网盘 忽略</del></p>
+<p><img src="http://image.coolapk.com/feed/2021/1015/21/1416461_c649dfce_6078_998@598x109.png.m.jpg" alt="img"></p>
+<p>第328行，RPC 监听端口，注意此端口为http协议，euserv要依赖CF入站，因此端口必须改掉，CF支持8880。</p>
+<p><img src="http://image.coolapk.com/feed/2021/1015/21/1416461_a8b105e1_6078_9982@363x117.png.m.jpg" alt="img"></p>
+<p>好了，配置文件修改完成，上传回去，重启aria2。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart aria2.service</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="http://wcwc.ml/index.php/default/38.html">配置原文地址</a></p>
+<img src="http://static.coolapk.com/emoticons/v9/coolapk_emotion_64_shounuehuaji.png" alt="受虐滑稽" style="zoom:25%;" />
+
+
+
+<p>提一下关于无ipv4访问ipv6的方法，</p>
+<h3 id="无ipv4获得ipv6访问"><a href="#无ipv4获得ipv6访问" class="headerlink" title="无ipv4获得ipv6访问"></a>无ipv4获得ipv6访问</h3><p>使用Teredo 。</p>
+<p>什么是Teredo，以下是维基百科的简单描述：</p>
+<p>Teredo是一个IPv6转换机制，它可为运行在IPv4互联网但没有IPv6网络原生连接的支持IPv6的主机提供完全的连通性。与其他的类似协议不同，它可以在网络地址转换（NAT）设备（例如家庭路由器）后完成功能。</p>
+<p>Teredo使用跨平台隧道协议提供IPv6连通性，将IPv6资料包封装在IPv4用户数据报协议（UDP）数据包内。Teredo路由器将这些数据报在IPv4互联网上传输及通过NAT设备。其他在IPv6网络上的Teredo节点（被称为Teredo中继，英文为Teredo relays）接收数据包，解开它们的封装，以及传递它们。</p>
+<p>Teredo是一种临时措施。在长远的未来，所有IPv6主机都应该使用本地的IPv6连接。Teredo应在原生IPv6连接可用时被停用。Christian Huitema在微软开发了Teredo，并且互联网工程任务组（IETF）将其标准化为RFC 4380。Teredo服务器监听UDP端口3544。</p>
+<p>通过查阅相关资料得知Teredo：</p>
+<ol>
+<li>可为没有ipv6的设备，获取一个可公网访问的ipv6地址。</li>
+<li>Teredo基于隧道技术。</li>
+<li>是一种ipv6过渡技术。</li>
+<li>只能单播连接。</li>
+</ol>
+<p>有些小伙伴电脑没有ipv6环境，可以启用Teredo来连接only ipv6 vps <a target="_blank" rel="noopener" href="http://wcwc.ml/usr/themes/handsome/usr/img/emotion/paopao/tieba_emotion_03.png"><img src="http://wcwc.ml/usr/themes/handsome/usr/img/emotion/paopao/tieba_emotion_03.png" alt="img" style="zoom:25%;" /></a><br><a target="_blank" rel="noopener" href="http://wcwc.ml/index.php/default/48.html">相关链接</a></p>
+<p>（这段是复制的）</p>
+<p>其中有些无法启用的原因以及一些缺陷原文作者没细细说，善用搜索</p>
+<p>最后我的无ipv4获得ipv6访问解决方案是，<strong>手机usb共享网络</strong></p>
+<h3 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h3><p><strong>为什么不连网盘？</strong></p>
+<p><del>因为没有</del></p>
+<p><strong>为什么不用docker？</strong></p>
+<p><del>因为免费德国小鸡dddd</del></p>
+<p><strong>为什么不用cloudreve？</strong></p>
+<p><del>因为我安装老卡死</del></p>
+<p><strong>为什么复制粘贴？</strong></p>
+<p><del>因为我是**</del></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2022/07/03/NOreadme/" rel="prev" title="hexo&test">
+      <i class="fa fa-chevron-left"></i> hexo&test
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/2023/05/10/%E5%90%AF%E5%8A%A8%E5%A5%BD%E4%BA%86%EF%BC%88%EF%BC%89/" rel="next" title="摸摸~~">
+      摸摸~~ <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Euserv-Filebrowser-Aria2%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">Euserv+Filebrowser+Aria2配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E7%94%A8%E6%90%AD%E5%BB%BAfilebrowser"><span class="nav-number">1.1.</span> <span class="nav-text">自用搭建filebrowser</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%84%B6%E5%90%8E%E6%98%AF%E9%85%8D%E7%BD%AE"><span class="nav-number">1.1.1.</span> <span class="nav-text">然后是配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E9%85%8D%E7%BD%AE%E7%9A%84%E9%A2%98%E5%A4%96%E8%AF%9D"><span class="nav-number">1.1.2.</span> <span class="nav-text">关于配置的题外话</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%96%E5%86%99service%E6%96%87%E4%BB%B6"><span class="nav-number">1.1.3.</span> <span class="nav-text">编写service文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Aria2%E7%9A%84%E6%90%AD%E5%BB%BA"><span class="nav-number">1.2.</span> <span class="nav-text">Aria2的搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%AA%E6%9C%89ipv6%E7%9A%84%E9%B8%A1%E9%9C%80%E8%A6%81%E4%BF%AE%E6%94%B9"><span class="nav-number">1.2.1.</span> <span class="nav-text">只有ipv6的鸡需要修改</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0ipv4%E8%8E%B7%E5%BE%97ipv6%E8%AE%BF%E9%97%AE"><span class="nav-number">1.3.</span> <span class="nav-text">无ipv4获得ipv6访问</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9D%9F%E8%AF%AD"><span class="nav-number">1.4.</span> <span class="nav-text">结束语</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">1406886</p>
+  <div class="site-description" itemprop="description">w</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">1406886</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/muse.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
